@@ -1,0 +1,20 @@
+.rate{
+      position: absolute;
+	right: 0px;
+	top: 10px;
+	font-weight: 500;
+	color:	#000000;
+	padding: 5px 10px;
+	background-color:	#ffd700;
+}
+.card{
+      font-family:'Pangolin', cursive;
+	height: 600px;
+	
+}
+.title{
+      color: rebeccapurple;
+      font-size: bold;
+      text-decoration: underline;
+
+}
