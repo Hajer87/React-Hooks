@@ -7,14 +7,34 @@
 	padding: 5px 10px;
 	background-color:	#ffd700;
 }
-.card{
-      font-family:'Pangolin', cursive;
-	height: 600px;
+.card {
+	position: relative;
+	width: 275px;
+	height: 500px;
+	background-color: #1e1b26;
+	margin: 60px auto 0 auto;
+	border-radius: 25px;
+	transform: scale(0.95);
+	transition: all 0.5s;
+	border-radius: 10%;
+	font-family: 'Fredoka One', cursive;
+    }
+    .card:hover {
+	transform: scale(1);
+	box-shadow: 0 5px 10px -12.125px rgba(0, 0, 0, 0.2);
+    }
+   .image{
+	width: 100%;
+	height: 375px;
+	border-radius: 10%
 	
-}
+    }
+
 .title{
-      color: rebeccapurple;
+      color: white;
+	font-size: 20px;
       font-size: bold;
-      text-decoration: underline;
+	text-align: center;
+      
 
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import MovieCard from './MovieCard'
 import '../styles/MovieList.css'
-import { moviesdata } from "./DataMovies";
+
 
 function MovieList(props) {
     return (

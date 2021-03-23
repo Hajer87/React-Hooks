@@ -1,11 +1,10 @@
 .List{
       position: relative;
-      margin:50px;
-      padding: px;
+      margin:0px;
+      padding: 30px;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       flex-wrap: wrap;
-
 
 }

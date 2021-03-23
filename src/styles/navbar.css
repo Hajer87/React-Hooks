@@ -1,0 +1,9 @@
+.bar{
+ font-size:  large;
+ font-weight: bold;
+ padding:0;
+ 
+}
+Nav.link:hover{
+      color: blue;
+}

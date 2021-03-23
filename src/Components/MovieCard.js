@@ -1,21 +1,23 @@
 import React from "react";
-import { Card, Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
+import RatingStar from './RatingStars'
+
 import '../styles/MovieCard.css'
 
 function Cards(props) {
   return (
-    <div className="card">
+    <div >
       <div>
-        <Card style={{width: "18rem"}}>
-          <Card.Img variant="top" src={props.Movie.image} />
+        <Card className="card">
+          <Card.Img className='image' variant="top" src={props.Movie.image} />
           <Card.Body  >
             <Card.Title className='title'>{props.Movie.name}</Card.Title>
-            <Card.Text >
+            <Card.Text  style={{ color: "black"}}>
             {props.Movie.description} <br/> <br/>
-            <strong className='rate'>Rating: {props.Movie.rating} </strong>
+            <strong className='rate'>{props.Movie.rating}/5 </strong>
+            <RatingStar rating={props.Movie.rating}/>
             </Card.Text>
-            <Button variant="primary">Watch</Button>
-          </Card.Body>
+             </Card.Body>
         </Card>
       </div>
     </div>

@@ -1,55 +1,92 @@
-import  React, {useState } from "react";
-import Modal from "react-bootstrap/Modal";
-import { Button, Nav} from "react-bootstrap";
-import AddForm from "./AddForm";
+import React, { useState } from "react";
 
-function Popup(props) {
+import Modal from "react-modal";
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+import "../styles/AddMovie.css";
 
-  const [shows, setShows] = useState(false);
-  const handleCloses = () => setShows(false);
-  const handleShows = () => setShows(true);
-  const handle = () => { handleShows(); handleClose() };
+Modal.setAppElement("#root");
 
+const AddMovie = ({ addMovie }) => {
+  const [modalIsOpen, setIsOpen] = useState(false);
+  
+  const [newMovie, setNewMovie] = useState({
+    name: "",
+    rating: "",
+    description: "",
+    image: "",
+  });
+
+  const handelChange = (e) => {
+    setNewMovie({ ...newMovie, [e.target.name]: e.target.value });
+  };
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
 
   return (
-    <div className="popup">
-      <Nav.Link href="#addMovie"onClick={handleShow}>Add Movie</Nav.Link>
-      {show?
-      <Modal show={show} onHide={handleClose} backdrop="true" keyboard={false} >
-        <Modal.Header closeButton>
-          <Modal.Title>Add Movie</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <AddForm />
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handle}>Add</Button>
-          </Modal.Footer>
-          </Modal>:null}
-          {shows&&!show?
-          <Modal show={shows} onHide={handleCloses} backdrop="true" keyboard={false}>
-          <Modal.Header closeButton>
-            <Modal.Title>Success</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-           Your movie is added successfully!
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleCloses}>
-              Close
-            </Button>
-            <Button variant="primary" onClick={handleCloses}>Thank You!</Button>
-          </Modal.Footer>
-      </Modal>:null}
+    <div className="Add-btn-container">
+      <button className="Add-btn" onClick={openModal}>
+       +
+      </button>
+      <Modal
+        className="add-modal"
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+      >
+        <h1 className="addMovie-h1">Movie Card</h1>
+        <form>
+          <label>Movie Name</label>
+          <input
+            type="text"
+            name="name"
+            required
+            onChange={handelChange}
+          />
+          <label>Movie Rate</label>
+          <input
+            type="text"
+            name="rating"
+            required
+            // onChange={(e) => setRating(e.target.value)}
+            onChange={handelChange}
+          />
+          <label>Movie Image</label>
+          <input
+            type="url"
+            name="image"
+            required
+            // onChange={(e) => setImage(e.target.value)}
+            onChange={handelChange}
+          />
+          <label>Movie Summary</label>
+          <textarea
+            type="text"
+            name="description"
+            required
+            // onChange={(e) => setDescription(e.target.value)}
+            onChange={handelChange}
+          />
+        </form>
+        <button
+          className="Modal-btn"
+          onClick={() => {
+            addMovie(newMovie);
+            closeModal();
+          }}
+        >
+          Submit
+        </button>
+        <button className="Modal-btn" onClick={closeModal}>
+          close
+        </button>
+      </Modal>
     </div>
   );
-}
+};
 
-export default Popup;
+export default AddMovie;
